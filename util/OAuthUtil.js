@@ -47,7 +47,11 @@ var oAuthUtil = module.exports =  {
 		var newVal = '';
 		var CONFIG_FILE = '.env';
 
-		fs.readFile('.env', 'utf8', function(err, data) {
+		if(!fs.existsSync(CONFIG_FILE)) {
+			fs.writeFileSync(CONFIG_FILE, '');
+		}
+
+		fs.readFile(CONFIG_FILE, 'utf8', function(err, data) {
 
 			if(err) {
 				console.log("[error] " + err);

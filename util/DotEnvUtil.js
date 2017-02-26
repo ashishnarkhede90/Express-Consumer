@@ -32,18 +32,23 @@ function load(options) {
 		encoding = options.encoding ? options.encoding : encoding;
 	}
 
-	try {
-		var envObj = parse(fs.readFileSync(path, {encoding: encoding}));
-		
-		Object.keys(envObj).forEach(function(key) {
-			process.env[key] = envObj[key] || process.env[key];
-		});
+	if(fs.existsSync(path)) {
+		try {
+			var envObj = parse(fs.readFileSync(path, {encoding: encoding}));
+			
+			Object.keys(envObj).forEach(function(key) {
+				process.env[key] = envObj[key] || process.env[key];
+			});
 
-		return envObj;
+			return envObj;
+		}
+		catch(e) {
+			console.log("[error] " + e);
+			return e;
+		}
 	}
-	catch(e) {
-		console.log("[error] " + e);
-		return e;
+	else {
+		fs.writeFileSync(path, '');
 	}
 }
 
