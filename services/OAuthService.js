@@ -10,7 +10,7 @@ dotenv.load();
 
 router.get('/', function(req, res) {
 	var consumerKey = process.env.CONSUMER_KEY;
-	var callbackUri = "http://localhost:3000/v1/sfdcconsumer/oauth/success";
+	var callbackUri = process.env.SFDCCALLBACK_URI || "http://localhost:3000/v1/sfdcconsumer/oauth/success";
 
 	var options = {
 		protocol: 'https://',
