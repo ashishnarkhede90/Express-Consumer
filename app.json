@@ -1,0 +1,8 @@
+{
+  "name": "Salesforce Consumer app using NodeJS and ExpressJS",
+  "description": "Salesforce consumer app to allow working with records in Salesforce using Force.com REST API",
+  "repository": "https://github.com/ashishnarkhede90/sc-sfdcconsumer",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static", "salesforce",  "rabbitmq", "amqp"],
+  "image": "heroku/nodejs"
+}

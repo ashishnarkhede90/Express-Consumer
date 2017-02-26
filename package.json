@@ -1,0 +1,32 @@
+{
+  "name": "sc-sfdcconsumer",
+  "version": "1.0.0",
+  "description": "Salesforce consumer app for SmartCoder",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashishnarkhede90/sc-sfdcconsumer.git"
+  },
+  "keywords": [
+    "nodejs",
+    "salesforce",
+    "amqp",
+    "rabbitmq"
+  ],
+  "author": "Ashish N",
+  "license": "MIT",
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "express": "^4.14.1",
+    "body-parser": "^1.16.1",
+    "nodemon": "^1.11.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ashishnarkhede90/sc-sfdcconsumer/issues"
+  },
+  "homepage": "https://github.com/ashishnarkhede90/sc-sfdcconsumer#readme"
+}
