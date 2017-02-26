@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var path = require('path');
 
 var oAuthService = require('./services/OAuthService');
 var consumerUtil = require('./util/ConsumerUtil');
@@ -19,6 +20,10 @@ app.use(function(req, res, next){
 app.use(express.static('./public'));
 
 app.use(cors());
+
+app.get('/', function(req, res) {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 app.use('/v1/sfdcconsumer', oAuthService);
 
