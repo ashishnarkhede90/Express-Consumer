@@ -39,10 +39,12 @@ router.post('/oauth/hashparams', function(req, res) {
 
 
 router.get('/admin', function(req, res) {
-	var p = __dirname;
+	/*var p = __dirname;
 	p = p.replace('routes', '');
 	p = path.join(p, '../public/admin.html');
-	res.sendFile(p);
+	res.sendFile(p); */
+
+	res.redirect('/');
 });
 
 /* Route to request new access token using a refresh token */
