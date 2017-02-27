@@ -23,9 +23,7 @@ $(document).ready(function() {
 			console.log("[success] " + JSON.stringify(success));
 			console.log(window.location.hostname);
 			// window.location.replace makes sure that the oauth callback link is not stored in browser history
-			//window.location.replace(window.location.hostname + '/v1/sfdcconsumer/admin');
-
-			$.get('/v1/sfdcconsumer/admin');
+			window.location.replace('https://' + window.location.hostname + '/v1/sfdcconsumer/admin');
 		})
 		.fail(function(err){
 			console.log("[err] " +JSON.stringify(err));
