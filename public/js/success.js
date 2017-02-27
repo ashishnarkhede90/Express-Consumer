@@ -22,7 +22,7 @@ $(document).ready(function() {
 		.done(function(success){
 			console.log("[success] " + JSON.stringify(success));
 			// window.location.replace makes sure that the oauth callback link is not stored in browser history
-			window.location.replace('http://localhost:3000/v1/sfdcconsumer/admin');
+			window.location.replace(window.location.hostname + '/v1/sfdcconsumer/admin');
 		})
 		.fail(function(err){
 			console.log("[err] " +JSON.stringify(err));
