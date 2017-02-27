@@ -21,6 +21,7 @@ $(document).ready(function() {
 	$.post('/v1/sfdcconsumer/oauth/hashparams', data)
 		.done(function(success){
 			console.log("[success] " + JSON.stringify(success));
+			console.log(window.location.hostname);
 			// window.location.replace makes sure that the oauth callback link is not stored in browser history
 			window.location.replace(window.location.hostname + '/v1/sfdcconsumer/admin');
 		})
