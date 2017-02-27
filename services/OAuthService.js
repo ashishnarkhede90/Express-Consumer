@@ -8,6 +8,7 @@ var oAuthUtil = require('../util/OAuthUtil.js');
 // load env vars from .env
 dotenv.load();
 
+// route to login into salesforce using OAuth2
 router.get('/', function(req, res) {
 	var consumerKey = process.env.CONSUMER_KEY;
 	var callbackUri = process.env.SFDCCALLBACK_URI || "http://localhost:3000/v1/sfdcconsumer/oauth/success";
@@ -21,14 +22,19 @@ router.get('/', function(req, res) {
 	res.redirect(options.protocol + options.hostname + options.path);
 });
 
+
+// route to handle Salesforce OAuth success/failure callback . This route should match the callback url provided in the Salesforce connected app
 router.get('/oauth/success', function(req, res) {
 	var p = __dirname;
-	p = p.replace('routes', '');
-	p = path.join(p, '../public/success.html');
+	var s = p.split('/');
+	p = p.replace(s[s.length-1], '');
+	p = path.join(p, '/public/success.html');
 	// serve a html page
 	res.sendFile(p);
 });
 
+
+// route to extract hash paramerts provided in the url by Salesforce OAuth after successful authentication
 router.post('/oauth/hashparams', function(req, res) {
 	var accessToken = `\nACCESS_TOKEN=${req.body.access_token}`;
 	var refreshToken = `\nREFRESH_TOKEN=${req.body.refresh_token}`;
@@ -38,6 +44,7 @@ router.post('/oauth/hashparams', function(req, res) {
 });
 
 
+// route to get the admin panel page for the app
 router.get('/admin', function(req, res) {
 	var p = __dirname;
 	var s = p.split('/');
@@ -46,7 +53,8 @@ router.get('/admin', function(req, res) {
 	res.sendFile(p);
 });
 
-// Route to request new access token using a refresh token
+
+// route to request new access token using a refresh token
 router.get('/accesstoken', function(req, res){
 	dotenv.load();
 	var response = res;

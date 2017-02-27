@@ -21,10 +21,12 @@ app.use(express.static('./public'));
 
 app.use(cors());
 
+// default route to show home page
 app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+// routes to handle OAuth authentication with Salesforce
 app.use('/v1/sfdcconsumer', oAuthService);
 
 // if no route is matched

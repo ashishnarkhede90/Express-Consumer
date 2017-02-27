@@ -7,7 +7,11 @@ dotenv.load();
 
 var oAuthUtil = module.exports =  {
 
-	// method to request a new access token using a refresh token
+	/**
+	*	@description 	Method to get a new access token for Salesforce authentication
+	*	@arguments		cb - a callback function
+	* 	@returns		a call to callback function with a flag to indicate success or failure	
+	*/
 	getAccessToken: function(cb) {
 		
 		var consumerKey = process.env.CONSUMER_KEY;
@@ -23,7 +27,7 @@ var oAuthUtil = module.exports =  {
 		// send the request using request util module
 		reqUtil.send(options, null, function(err, response) {
 			if(err) {
-				if(cb) cb(err);
+				if(cb) return (cb(err));
 			}
 
 			if(response.statusCode == 200) {
@@ -32,15 +36,20 @@ var oAuthUtil = module.exports =  {
 				if(body.access_token) {
 					// update the access token in the config
 					oAuthUtil.updateAccessDetails(body, function(done) {
-						if(done) cb(done);
-						else cb(!done);
+						if(done) return (cb(done));
+						else return (cb(!done));
 					});
 				}
 			}				
 		});
 	},
 
-	// update the SFDC oAuth details in the config file (.env)
+	/*
+	*	@description	Method to update env variables with Salesforce authentication information in .env file 	
+	*	@arguments		accesInfo - Salesforce authentication information
+	*					cb (optional) - a callback function to invoke on completion
+	*	@returns		call to callback function (if one is provided) with a flag to indicate success or failure	
+	*/
 	updateAccessDetails(accessInfo, cb) {
 
 		var config = '';

@@ -1,3 +1,4 @@
+// function to create a JSON representation of a salesforce lead sobject
 var Lead = function Lead(ownerID, leadSource, connectProjectId, user, company) {
 	this.OwnerId = ownerID;
 	this.LeadSource = leadSource;
@@ -8,6 +9,7 @@ var Lead = function Lead(ownerID, leadSource, connectProjectId, user, company) {
 	this.Email = user.email;
 }
 
+// function to create a JSON representation of a salesforce campaign member sobject
 var CampaignMember = function CampaignMember(leadId, campaignId) {
 	campaignId = '70141000000AQnr';  // which Campaign the member should be added to. Ideally, this config should be stored in db 
 	this.CampaignId = campaignId;
