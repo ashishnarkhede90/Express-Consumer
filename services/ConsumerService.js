@@ -10,10 +10,11 @@ dotEnv.load();
 
 const path = '/services/data/v38.0';
 
+console.log(process.env);
+
 if(process.env.INSTANCE_URL) {
 	const instanceUrl = process.env.INSTANCE_URL.replace('https://', '');
 }
-
 
 function InvalidSessionError(name, message) {
 	this.name = name;
