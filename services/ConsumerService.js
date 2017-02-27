@@ -42,7 +42,9 @@ var createNewLead = function createNewLead(data, cb) {
 				'Content-Type': 'application/json'
 			}
 		}	
-	
+		
+		console.log(options);
+
 		// reqUtil.send(request_options, request_body, callback{})
 		reqUtil.send(options, JSON.stringify(lead), function(err, response) {
 			if(err) {
